@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Dashboard with CSS Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+        }
+
+        /* Desktop Layout: Grid Template Areas */
+        .dashboard {
+            display: grid;
+            grid-template-areas:
+                "header header header"
+                "sidebar main main"
+                "footer footer footer";
+            grid-template-columns: 250px 1fr 1fr;
+            grid-template-rows: auto 1fr auto;
+            gap: 1rem;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .header {
+            grid-area: header;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 0.875rem;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar h2 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .sidebar nav ul {
+            list-style: none;
+        }
+
+        .sidebar nav li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar nav li:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .sidebar nav li.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .main {
+            grid-area: main;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            overflow-y: auto;
+        }
+
+        .main h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        /* Cards Grid inside Main */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-card h3 {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-card .change {
+            font-size: 0.75rem;
+            color: #10b981;
+        }
+
+        .stat-card .change.negative {
+            color: #ef4444;
+        }
+
+        /* Content sections */
+        .content-section {
+            margin-bottom: 2rem;
+        }
+
+        .content-section h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .chart-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.125rem;
+        }
+
+        .footer {
+            grid-area: footer;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            color: #666;
+            font-size: 0.875rem;
+        }
+
+        /* Mobile: Stack everything vertically */
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-areas:
+                    "header"
+                    "main"
+                    "sidebar"
+                    "footer";
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto auto;
+                padding: 0.5rem;
+                gap: 0.5rem;
+            }
+
+            .header h1 {
+                font-size: 1.25rem;
+            }
+
+            .sidebar {
+                padding: 1rem;
+            }
+
+            .sidebar nav li {
+                padding: 0.5rem;
+                font-size: 0.875rem;
+            }
+
+            .main {
+                padding: 1rem;
+            }
+
+            .main h2 {
+                font-size: 1.25rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-placeholder {
+                height: 200px;
+            }
+        }
+
+        /* Tablet: Sidebar on top, main below */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .dashboard {
+                grid-template-areas:
+                    "header header"
+                    "sidebar main"
+                    "footer footer";
+                grid-template-columns: 200px 1fr;
+                grid-template-rows: auto 1fr auto;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Large screens: 4 columns for cards */
+        @media (min-width: 1400px) {
+            .dashboard {
+                grid-template-columns: 280px 1fr 1fr;
+                max-width: 1600px;
+                margin: 0 auto;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stat-card {
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        .stat-card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 Dashboard Analytics</h1>
+            <p>Welcome back! Here's your overview</p>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>📁 Navigation</h2>
+            <nav>
+                <ul>
+                    <li class="active">🏠 Dashboard</li>
+                    <li>📈 Analytics</li>
+                    <li>👥 Users</li>
+                    <li>💼 Products</li>
+                    <li>📦 Orders</li>
+                    <li>💳 Payments</li>
+                    <li>⚙️ Settings</li>
+                    <li>🚪 Logout</li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main">
+            <h2>Overview</h2>
+
+            <!-- Stats Cards -->
+            <div class="cards-grid">
+                <div class="stat-card">
+                    <h3>Total Revenue</h3>
+                    <div class="value">$45,231</div>
+                    <div class="change">+12.5% from last month</div>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Active Users</h3>
+                    <div class="value">12,543</div>
+                    <div class="change">+8.2% from last month</div>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Total Orders</h3>
+                    <div class="value">3,842</div>
+                    <div class="change negative">-3.1% from last month</div>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Conversion Rate</h3>
+                    <div class="value">3.24%</div>
+                    <div class="change">+15.3% from last month</div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="content-section">
+                <h3>📊 Sales Overview</h3>
+                <div class="chart-placeholder">
+                    📈 Chart visualization would go here
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>🌍 Geographic Distribution</h3>
+                <div class="chart-placeholder">
+                    🗺️ Map visualization would go here
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Dashboard Analytics. Built with CSS Grid | Responsive Design Example</p>
+        </div>
+    </div>
+
+    <script>
+        // Add click handlers for navigation
+        document.querySelectorAll('.sidebar nav li').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar nav li').forEach(li => {
+                    li.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
