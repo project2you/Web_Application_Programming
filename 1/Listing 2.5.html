@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Cards with Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen p-4">
+    <!-- Header -->
+    <div class="max-w-7xl mx-auto mb-8">
+        <div class="text-center mb-8 animate-fade-in-up">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-2">
+                🛍️ Product Showcase
+            </h1>
+            <p class="text-gray-600 text-sm md:text-base">
+                Responsive grid layout with Tailwind CSS utility classes
+            </p>
+        </div>
+
+        <!-- Responsive Grid: 1 col mobile, 2 tablet, 3 desktop, 4 large desktop -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
+            
+            <!-- Product Card 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in-up">
+                <div class="relative overflow-hidden group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" 
+                        alt="Product" 
+                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    >
+                    <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        -20%
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Electronics</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="text-xs text-gray-500 ml-1">(124)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-800 truncate hover:text-purple-600 transition-colors">
+                        Wireless Headphones Pro
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                        Premium noise-cancelling headphones with exceptional sound quality and 30-hour battery life.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-gray-400 text-sm line-through mr-2">$149.99</span>
+                            <span class="text-xl font-bold text-purple-600">$119.99</span>
+                        </div>
+                        <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-200 text-sm font-medium">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in-up" style="animation-delay: 0.1s">
+                <div class="relative overflow-hidden group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop" 
+                        alt="Product" 
+                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    >
+                    <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        New
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Accessories</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm">★★★★☆</span>
+                            <span class="text-xs text-gray-500 ml-1">(89)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-800 truncate hover:text-purple-600 transition-colors">
+                        Smart Watch Ultra
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                        Feature-packed smartwatch with health tracking, GPS, and water resistance up to 50m.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-purple-600">$299.99</span>
+                        <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-200 text-sm font-medium">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in-up" style="animation-delay: 0.2s">
+                <div class="relative overflow-hidden group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=300&fit=crop" 
+                        alt="Product" 
+                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    >
+                    <div class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        Popular
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Fashion</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="text-xs text-gray-500 ml-1">(256)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-800 truncate hover:text-purple-600 transition-colors">
+                        Designer Sunglasses
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                        Stylish sunglasses with UV400 protection and polarized lenses. Perfect for any occasion.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-purple-600">$89.99</span>
+                        <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-200 text-sm font-medium">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in-up" style="animation-delay: 0.3s">
+                <div class="relative overflow-hidden group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=300&fit=crop" 
+                        alt="Product" 
+                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    >
+                    <div class="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        Limited
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Footwear</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm">★★★★☆</span>
+                            <span class="text-xs text-gray-500 ml-1">(178)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-800 truncate hover:text-purple-600 transition-colors">
+                        Running Sneakers Pro
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                        Lightweight running shoes with advanced cushioning technology for maximum comfort.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-purple-600">$129.99</span>
+                        <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-200 text-sm font-medium">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in-up" style="animation-delay: 0.4s">
+                <div class="relative overflow-hidden group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=300&fit=crop" 
+                        alt="Product" 
+                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    >
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Tech</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="text-xs text-gray-500 ml-1">(342)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-800 truncate hover:text-purple-600 transition-colors">
+                        Wireless Keyboard
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                        Ergonomic wireless keyboard with mechanical switches and RGB backlighting.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-purple-600">$79.99</span>
+                        <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-200 text-sm font-medium">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in-up" style="animation-delay: 0.5s">
+                <div class="relative overflow-hidden group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=400&h=300&fit=crop" 
+                        alt="Product" 
+                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    >
+                    <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        Sale
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Cameras</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm">★★★★☆</span>
+                            <span class="text-xs text-gray-500 ml-1">(95)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-800 truncate hover:text-purple-600 transition-colors">
+                        Mirrorless Camera Kit
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                        Professional camera with 24MP sensor, 4K video, and versatile lens kit included.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="text-gray-400 text-sm line-through mr-2">$899.99</span>
+                            <span class="text-xl font-bold text-purple-600">$749.99</span>
+                        </div>
+                        <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-200 text-sm font-medium">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 7 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in-up" style="animation-delay: 0.6s">
+                <div class="relative overflow-hidden group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&h=300&fit=crop" 
+                        alt="Product" 
+                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    >
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Home</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm">★★★★★</span>
+                            <span class="text-xs text-gray-500 ml-1">(210)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-800 truncate hover:text-purple-600 transition-colors">
+                        Smart Speaker Mini
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                        Compact smart speaker with voice assistant, premium sound, and smart home integration.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-purple-600">$49.99</span>
+                        <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-200 text-sm font-medium">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card 8 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in-up" style="animation-delay: 0.7s">
+                <div class="relative overflow-hidden group">
+                    <img 
+                        src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&h=300&fit=crop" 
+                        alt="Product" 
+                        class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    >
+                    <div class="absolute top-2 right-2 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                        Eco
+                    </div>
+                </div>
+                <div class="p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs text-gray-500 uppercase tracking-wide">Lifestyle</span>
+                        <div class="flex items-center">
+                            <span class="text-yellow-400 text-sm">★★★★☆</span>
+                            <span class="text-xs text-gray-500 ml-1">(67)</span>
+                        </div>
+                    </div>
+                    <h3 class="text-lg font-bold mb-2 text-gray-800 truncate hover:text-purple-600 transition-colors">
+                        Reusable Water Bottle
+                    </h3>
+                    <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                        Eco-friendly stainless steel bottle with temperature control. Keeps drinks cold for 24h.
+                    </p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xl font-bold text-purple-600">$34.99</span>
+                        <button class="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-md transition-colors duration-200 text-sm font-medium">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Responsive Info Badge -->
+        <div class="fixed bottom-4 right-4 bg-white rounded-lg shadow-lg px-4 py-2 text-sm font-medium text-gray-700">
+            <span class="block sm:hidden">📱 Mobile (1 col)</span>
+            <span class="hidden sm:block md:hidden">📱 Small (1 col)</span>
+            <span class="hidden md:block lg:hidden">💻 Tablet (2 cols)</span>
+            <span class="hidden lg:block xl:hidden">🖥️ Desktop (3 cols)</span>
+            <span class="hidden xl:block">🖥️ Large (4 cols)</span>
+        </div>
+    </div>
+
+    <script>
+        // Add simple cart notification on click
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                const productName = this.closest('.p-4').querySelector('h3').textContent;
+                alert(`✅ "${productName}" added to cart!`);
+            });
+        });
+    </script>
+</body>
+</html>
