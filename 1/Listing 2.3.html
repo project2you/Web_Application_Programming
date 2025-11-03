@@ -1,0 +1,308 @@
+/* 
+Listing 2.3: ตัวอย่าง Media Queries สำหรับ Responsive Design
+หัวข้อ: 2.4.1 หลักการพื้นฐานของ Responsive Design
+*/
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Design with Media Queries</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        /* Base styles for mobile (Mobile-first approach) */
+        .container {
+            width: 100%;
+            padding: 1rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .card {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: #333;
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+
+        .card .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: #667eea;
+            color: white;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .info-box {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            font-size: 0.75rem;
+            color: #333;
+            font-weight: 600;
+            z-index: 1000;
+        }
+
+        /* Tablet (768px and up) */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 720px;
+                margin: 0 auto;
+                padding: 1.5rem;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .card h3 {
+                font-size: 1.25rem;
+            }
+
+            .card p {
+                font-size: 0.9375rem;
+            }
+
+            .info-box::after {
+                content: ' - Tablet View';
+            }
+        }
+
+        /* Desktop (1024px and up) */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 960px;
+                padding: 2rem;
+            }
+
+            .header {
+                padding: 2rem;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+            }
+
+            .card {
+                padding: 2rem;
+            }
+
+            .card h3 {
+                font-size: 1.5rem;
+            }
+
+            .card p {
+                font-size: 1rem;
+            }
+
+            .info-box::after {
+                content: ' - Desktop View';
+            }
+        }
+
+        /* Large Desktop (1280px and up) */
+        @media (min-width: 1280px) {
+            .container {
+                max-width: 1200px;
+            }
+
+            .grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .info-box::after {
+                content: ' - Large Desktop View';
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+
+            .info-box {
+                display: none;
+            }
+
+            .card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ddd;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            }
+
+            .container {
+                background: #2a2a3e;
+            }
+
+            .card {
+                background: linear-gradient(135deg, #3a3a4e 0%, #2a2a3e 100%);
+            }
+
+            .card h3 {
+                color: #fff;
+            }
+
+            .card p {
+                color: #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 Responsive Design Demo</h1>
+            <p>ปรับขนาดหน้าต่างเพื่อดู Responsive Layout</p>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>📱 Mobile First</h3>
+                <p>เริ่มออกแบบสำหรับมือถือก่อน จากนั้นจึงขยายไปยังหน้าจอที่ใหญ่ขึ้น</p>
+                <span class="badge">< 640px</span>
+            </div>
+
+            <div class="card">
+                <h3>💻 Tablet View</h3>
+                <p>Layout ปรับเปลี่ยนเป็น 2 คอลัมน์สำหรับแท็บเล็ตและหน้าจอขนาดกลาง</p>
+                <span class="badge">768px - 1024px</span>
+            </div>
+
+            <div class="card">
+                <h3>🖥️ Desktop View</h3>
+                <p>Layout แสดงเป็น 3-4 คอลัมน์สำหรับหน้าจอขนาดใหญ่</p>
+                <span class="badge">1024px - 1280px</span>
+            </div>
+
+            <div class="card">
+                <h3>🌐 Fluid Grid</h3>
+                <p>ใช้หน่วยวัดแบบสัดส่วน (%, em, rem) แทน pixel คงที่</p>
+                <span class="badge">Flexible</span>
+            </div>
+
+            <div class="card">
+                <h3>🖼️ Flexible Images</h3>
+                <p>รูปภาพปรับขนาดตาม Container ด้วย max-width: 100%</p>
+                <span class="badge">Adaptive</span>
+            </div>
+
+            <div class="card">
+                <h3>📐 Breakpoints</h3>
+                <p>จุดที่ Layout เปลี่ยนแปลงตามขนาดหน้าจอ</p>
+                <span class="badge">Media Queries</span>
+            </div>
+
+            <div class="card">
+                <h3>🎯 Performance</h3>
+                <p>โหลดเฉพาะ CSS ที่จำเป็นสำหรับแต่ละอุปกรณ์</p>
+                <span class="badge">Optimized</span>
+            </div>
+
+            <div class="card">
+                <h3>♿ Accessibility</h3>
+                <p>รองรับการใช้งานสำหรับทุกคนและทุกอุปกรณ์</p>
+                <span class="badge">Inclusive</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        📱 Current View: <span id="viewport-width"></span>px
+    </div>
+
+    <script>
+        // Update viewport width display
+        function updateViewportWidth() {
+            document.getElementById('viewport-width').textContent = window.innerWidth;
+        }
+
+        updateViewportWidth();
+        window.addEventListener('resize', updateViewportWidth);
+    </script>
+</body>
+</html>
